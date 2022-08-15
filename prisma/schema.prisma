@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  name    String?
+  role    Role     @default(USER)
+  posts   Order[]
+  profile Profile?
+}
+
+model Customer {
+  id      Int     @id @default(autoincrement())
+  address String  @unique
+  name    String?
+  posts   Order[]
+}
+
+model Profile {
+  id     Int    @id @default(autoincrement())
+  bio    String
+  user   User   @relation(fields: [userId], references: [id])
+  userId Int    @unique
+}
+
+model Order {
+  id         Int              @id @default(autoincrement())
+  title      String
+  products   ProductOnPosts[]
+  createdAt  DateTime         @default(now())
+  published  Boolean          @default(false)
+  author     User             @relation(fields: [authorId], references: [id])
+  authorId   Int
+  customer   Customer         @relation(fields: [customerId], references: [id])
+  customerId Int
+}
+
+model Product {
+  id    Int              @id @default(autoincrement())
+  name  String
+  posts ProductOnPosts[]
+}
+
+model ProductOnPosts {
+  post       Order    @relation(fields: [postId], references: [id])
+  postId     Int // relation scalar field (used in the `@relation` attribute above)
+  product   Product  @relation(fields: [categoryId], references: [id])
+  categoryId Int // relation scalar field (used in the `@relation` attribute above)
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([postId, categoryId])
+}
+
+enum Role {
+  USER
+  ADMIN
+}
