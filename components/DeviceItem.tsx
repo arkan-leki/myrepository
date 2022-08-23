@@ -9,7 +9,7 @@ interface Props {
 const DeviceItem = ({ product }: Props) => {
     return (
         <>
-            <div className='flex flex-col w-48 min-w-max m-2 bg-slate-800 bg-opacity-50 hover:bg-opacity-50 p-2 m-1 cursor-pointer select-none shadow-cyan-700 shadow-sm items-center '>
+            <div className='flex flex-col w-48 min-w-max bg-slate-800 bg-opacity-50 hover:bg-opacity-50 p-2 m-1 cursor-pointer select-none shadow-cyan-700 shadow-sm items-center '>
                 <div>
                     <img className="w-20 pointer-events-none" src="/Apple-IPhone-8-Plus-on-transparent-background-PNG.png" alt="account Logo" width={100} height={100} />
                 </div>
