@@ -4,6 +4,7 @@ import { AddOrderModal } from "./Util";
 
 const OrderList = ({ orderz }) => {
   const [orders, setOrders] = useState(orderz);
+  const [index, setIndex] = useState(false)
 
   async function saveOrder(order) {
     const res = await fetch('/api/orders', {
@@ -26,8 +27,8 @@ const OrderList = ({ orderz }) => {
       <div className="py-3 text-xl font-bold">
         <h3 className="float-left text-lg m-0">Recent Slases</h3>
       </div>
-      {orders && orders.map((order) => (
-        <ListItem key={order.id} order={order} />
+      {orders && orders.map((order, i) => (
+        <ListItem key={order.id} order={order} Id={i} setIndex={setIndex} Index={index}  />
       ))}
       <div className="py-3 text-blue-700 flex w-full flex-row justify-evenly items-center ">
         <div><AddOrderModal saveOrder={handeSave} /></div>
@@ -37,17 +38,17 @@ const OrderList = ({ orderz }) => {
   )
 }
 
-export async function getStaticProps(context) {
-  const data = await prisma.order.findMany()
+// export async function getStaticProps(context) {
+//   const data = await prisma.order.findMany()
 
-  //convert decimal value to string to pass through as json
-  const orders = data.map((order) => ({
-    ...order,
-    createdAt: order.createdAt.toString(),
-  }))
-  return {
-    props: { orderz: orders },
-  }
-}
+//   //convert decimal value to string to pass through as json
+//   const orders = data.map((order) => ({
+//     ...order,
+//     createdAt: order.createdAt.toString(),
+//   }))
+//   return {
+//     props: { orderz: orders },
+//   }
+// }
 
 export default OrderList

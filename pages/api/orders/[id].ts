@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../../../lib/prisma'
 
 type Data = {
-    order: Order
+    // order: Order
 }
 
 export default async function handler(
@@ -15,12 +15,24 @@ export default async function handler(
 
     if (req.method === 'GET') {
         try {
-            const data = await prisma.order.findUnique({
+            const order = await prisma.order.findUnique({
                 where: {
-                  id: Number(req.query.id),
+                    id: Number(req.query.id),
                 },
-              })
-            return res.status(200).json({ data })
+                include: {
+                    products: true,
+                },
+            })
+            const products = await prisma.product.findMany({
+                include: {
+                    devices: true,
+                    _count: {
+                        select: { devices: true },
+                    },
+                },
+            })
+
+            return res.status(200).json({ order, products })
         } catch (err) {
             console.error(err)
             return res.status(500).json({ msg: 'Something went wrong' })

@@ -64,6 +64,7 @@ export async function getStaticProps() {
   //convert decimal value to string to pass through as json
   const orders = data.map((order) => ({
     ...order,
+    total: order.total.toString(),
     createdAt: order.createdAt.toString(),
   }))
   return {

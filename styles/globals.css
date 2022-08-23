@@ -4,7 +4,7 @@
 
 @layer base {
     body{
-        @apply bg-gray-800 text-gray-300 scrollbar-thin text-[1rem];
+        @apply bg-gray-800 text-gray-300 scrollbar-thin text-[1rem] select-none ;
     }
 }
 
@@ -22,9 +22,9 @@
         transition-all duration-100 scale-0 origin-right;
     }
     .btn{
-        @apply bg-blue-400 hover:bg-blue-800 text-white p-2 ;
+        @apply bg-blue-700 hover:bg-opacity-100 text-white p-2 bg-opacity-70;
     }
     .input{
-        @apply outline-none bg-gray-500 rounded-md p-2 text-white
+        @apply outline-none bg-gray-500 rounded-sm p-2 text-white
     }
 }

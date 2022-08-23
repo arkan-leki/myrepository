@@ -1,16 +1,18 @@
-import { Order } from '@prisma/client';
+import { Order, Product } from '@prisma/client';
 import { BsHash, BsPrinter } from 'react-icons/bs';
 import { Layout } from '../../components/Layout'
 import { NextPageContext, NextPage, InferGetServerSidePropsType } from "next";
 import React from 'react';
 import ProductOnOrder from '../../components/ProductOnOrder';
 import { HiOutlineXCircle, HiQrcode, HiXCircle } from 'react-icons/hi';
+import PostsOnOrder from '../../components/PostsOnOrder';
 
 interface Props {
   order: Order
+  products: Product[]
 }
 
-const OrderPage = ({ order }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const OrderPage = ({ order, products }: Props) => {
 
   return (
     <>
@@ -27,35 +29,26 @@ const OrderPage = ({ order }: InferGetServerSidePropsType<typeof getServerSidePr
             </div>
             <div className='m-2 p-2 px-10 bg-white rounded text-white bg-opacity-10 flex flex-row items-center'>
               <div className='flex-grow'>
-                <p>Date: {order.createdAt}</p>
+                <p>Date: {new Date(order.createdAt).toLocaleDateString('en-US', {
+                  day: 'numeric',
+                  month: 'short',
+                  year: 'numeric',
+                })}</p>
               </div>
               <div className='ml-2'>
                 <p>Auther: @{order.authorId}</p>
               </div>
             </div>
-            <div className='m-2 p-2 px-10 bg-white rounded text-white bg-opacity-10 flex flex-col items-center'>
-              <div className='flex flex-row justify-between items-center p-2 rounded  w-full'>
-                <img className='w-10 rounded mr-2' src="/Apple-IPhone-8-Plus-on-transparent-background-PNG.png" alt="" />
-                <p>Product: Iphone 8</p>
-                <div className='m-2 px-1 bg-gray-600'>
-                  <p>1</p>
-                </div>
-                <div className='ml-2p-3'>
-                  <p>$90</p>
-                </div>
-                <div><button className="btn hover:bg-gray-600 bg-transparent rounded-3xl"><HiOutlineXCircle size={20} /></button></div>
-              </div>
-              <div className='flex flex-row justify-between items-center p-2 rounded  w-full'>
-                <img className='w-10 rounded mr-2' src="/Apple-IPhone-8-Plus-on-transparent-background-PNG.png" alt="" />
-                <p>Product: Iphone 8</p>
-                <div className='m-2 px-1 bg-gray-600'>
-                  <p>1</p>
-                </div>
-                <div className='ml-2p-3'>
-                  <p>$90</p>
-                </div>
-                <div><button className="btn bg-transparent rounded-3xl"><HiOutlineXCircle size={20} /></button></div>
-              </div>
+            <div className='mb-1 m-2 p-2 px-10 bg-white rounded text-white bg-opacity-10 flex flex-col items-center'>
+              {order.products?.map((post: { price: any; quantity: any; total: any; postId: any; productId: number; }) =>
+                <PostsOnOrder post={{
+                  price: post.price,
+                  quantity: post.quantity,
+                  total: post.total,
+                  postId: post.postId,
+                  product: Object.values(products.filter((product: Product) => product.id === post.productId)).map((val) => val.name)
+                }} />
+              )}
             </div>
             <div className='m-2 p-2 px-10 bg-white rounded text-white bg-opacity-10 '>
               <h3>Order Summary</h3>
@@ -95,13 +88,10 @@ const OrderPage = ({ order }: InferGetServerSidePropsType<typeof getServerSidePr
                   <h3 className="float-left m-0">Products</h3>
                 </div>
                 <div className='flex flex-wrap justify-evenly w-full'>
-                  <ProductOnOrder />
-                  <ProductOnOrder />
-                  <ProductOnOrder />
-                  <ProductOnOrder />
-                  <ProductOnOrder />
+                  {products?.map((product) =>
+                    <ProductOnOrder />
+                  )}
                 </div>
-
               </div>
             </div>
           </div>
@@ -116,10 +106,11 @@ export async function getServerSideProps(context: NextPageContext) {
   const res = await fetch(`http://localhost:3000/api/orders/${context.query.id}`);
   const data = await res.json()
 
-  const order: Order = data.data
+  const order: Order = data.order
+  const products: Order = data.products
 
   return {
-    props: { order },
+    props: { order, products },
   }
 }
 

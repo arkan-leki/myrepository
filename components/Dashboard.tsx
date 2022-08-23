@@ -11,7 +11,7 @@ interface Props{
 
 const Dashboard = ({ InitialOrders , InitialCustomers }: Props) => {
     return (
-        <div className='px-5 my-5 flex flex-col justify-center items-center h-full'>
+        <div className='px-5 my-5 flex flex-col justify-center items-center'>
             <Widget />
             <div className="my-5" />
             <div className="grid lg:grid-cols-2 gap-5">

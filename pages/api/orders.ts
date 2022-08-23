@@ -13,9 +13,7 @@ export default async function handler(
 
   if (req.method === 'GET') {
     try {
-      const data = await prisma.order.findMany({
-        ProductOnPosts: true
-      })
+      const data = await prisma.order.findMany()
       return res.status(200).json({ data })
     } catch (err) {
       console.error(err)
