@@ -4,7 +4,23 @@
 
 @layer base {
     body{
-        @apply bg-gray-800 text-gray-300 scrollbar-thin text-[1rem] select-none ;
+        @apply bg-gradient-to-r from-indigo-800 via-purple-800 to-pink-800 text-gray-300 scrollbar-thin text-[1rem] select-none ;
+    }
+
+    table{
+        @apply min-w-full divide-y divide-gray-200 ;
+    }
+
+    thead{
+        @apply bg-gray-900 bg-opacity-60 hover:bg-opacity-100 ;
+    }
+
+    th{
+        @apply px-6 py-3 text-xs font-bold text-right text-gray-200 uppercase ;
+    }
+
+    td{
+        @apply px-6 py-4 text-sm text-right whitespace-nowrap;
     }
 }
 

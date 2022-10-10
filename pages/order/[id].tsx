@@ -2,17 +2,36 @@ import { Order, Product } from '@prisma/client';
 import { BsHash, BsPrinter } from 'react-icons/bs';
 import { Layout } from '../../components/Layout'
 import { NextPageContext, NextPage, InferGetServerSidePropsType } from "next";
-import React from 'react';
+import React, { useState } from 'react';
 import ProductOnOrder from '../../components/ProductOnOrder';
 import { HiOutlineXCircle, HiQrcode, HiXCircle } from 'react-icons/hi';
 import PostsOnOrder from '../../components/PostsOnOrder';
+import { useRouter } from 'next/router';
 
 interface Props {
   order: Order
   products: Product[]
 }
 
-const OrderPage = ({ order, products }: Props) => {
+const OrderPage = ({ order, products }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const [posts, setPosts] = useState(order?.products)
+  const router = useRouter()
+
+  async function saveOrder(order: any) {
+    const res = await fetch(`http://localhost:3000/api/orders/${router.query.id}`, {
+      method: 'POST',
+      body: JSON.stringify(order)
+    });
+    if (!res.ok) {
+      throw new Error(res.statusText)
+    }
+    return await res.json()
+  }
+
+  async function addPost(data: any) {
+    const orderData = await saveOrder(data)
+    setPosts([...posts, orderData.data])
+  }
 
   return (
     <>
@@ -40,8 +59,8 @@ const OrderPage = ({ order, products }: Props) => {
               </div>
             </div>
             <div className='mb-1 m-2 p-2 px-10 bg-white rounded text-white bg-opacity-10 flex flex-col items-center'>
-              {order.products?.map((post: { price: any; quantity: any; total: any; postId: any; productId: number; }) =>
-                <PostsOnOrder post={{
+              {posts?.map((post: { price: any; quantity: any; total: any; postId: any; productId: number; },i) =>
+                <PostsOnOrder key={i} post={{
                   price: post.price,
                   quantity: post.quantity,
                   total: post.total,
@@ -89,13 +108,13 @@ const OrderPage = ({ order, products }: Props) => {
                 </div>
                 <div className='flex flex-wrap justify-evenly w-full'>
                   {products?.map((product) =>
-                    <ProductOnOrder />
+                    <ProductOnOrder key={product.id} postId={order.id} product={product} addProductHandler={addPost} />
                   )}
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </div> 
       </Layout>
     </>
   )

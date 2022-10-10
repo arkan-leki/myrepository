@@ -39,12 +39,12 @@ const BrandList = ({ brands }: Props) => {
         <>
             <div className='p-3 font-bold text-white'><h3>Brands</h3></div>
             <div className='flex flex-row w-full border-2 relative'>
-                <div className='flex flex-row  bg-indigo-800 bg-opacity-30 w-full h-32 justify-start overflow-scroll scrollbar-thin cursor-grab select-none scroll-smooth  md:scroll-auto'>
-                    {brandz.map((brand: Brand, i) => (
+                <div className='flex flex-row  bg-indigo-800 mr-16 bg-opacity-30 w-full h-42 justify-start overflow-scroll scrollbar-thin cursor-grab select-none scroll-smooth  md:scroll-auto'>
+                    {brandz?.map((brand: Brand, i) => (
                         <BrandItem key={i} brand={brand} />
                     ))}
                 </div>
-                <button className='btn absolute right-0 h-full w-16 bg-opacity-70 flex flex-col items-center justify-center ' onClick={handleOpen}><BsPlusCircle size={24} />Brand</button>
+                <button className='btn absolute right-0 h-full w-fit  bg-opacity-70 flex flex-col items-center justify-center ' onClick={handleOpen}><BsPlusCircle size={24} />Brand</button>
             </div>
             <Modal visible={show} onClose={handleClose} title={'Brand Form'} children={<>
                 <div className='flex flex-col w-80 items-center'>

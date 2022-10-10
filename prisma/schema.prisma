@@ -10,65 +10,94 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Account {
+  id            String  @id @default(cuid())
+  userId        String
+  role          Role    @default(ADMIN)
+  refresh_token String? @db.Text
+  access_token  String? @db.Text
+  expires_at    Int?
+  token_type    String?
+  scope         String?
+  id_token      String? @db.Text
+  session_state String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, role])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
 model User {
-  id      Int      @id @default(autoincrement())
-  email   String   @unique
-  name    String?
-  role    Role     @default(USER)
-  posts   Order[]
-  profile Profile?
+  id       String    @id @default(cuid())
+  name     String?
+  email    String?   @unique
+  image    String?
+  accounts Account[]
+  sessions Session[]
+  Order    Order[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
 }
 
 model Customer {
-  id      Int     @id @default(autoincrement())
+  id      String  @id @default(cuid())
   address String  @unique
   name    String?
   posts   Order[]
 }
 
-model Profile {
-  id     Int    @id @default(autoincrement())
-  bio    String
-  user   User   @relation(fields: [userId], references: [id])
-  userId Int    @unique
-}
-
 model Order {
-  id         Int              @id @default(autoincrement())
+  id         String           @id @default(cuid())
   title      String
-  total      String   @default("0")
+  total      String           @default("0")
   products   ProductOnPosts[]
   createdAt  DateTime         @default(now())
   published  Boolean          @default(false)
   author     User             @relation(fields: [authorId], references: [id])
-  authorId   Int
+  authorId   String
   customer   Customer         @relation(fields: [customerId], references: [id])
-  customerId Int
+  customerId String
 }
 
 model Device {
-  id             Int              @id @default(autoincrement())
+  id             String           @id @default(cuid())
   code           String
+  price          String
+  stock          Boolean
   product        Product          @relation(fields: [productId], references: [id])
-  productId      Int // relation scalar field (used in the `@relation` attribute above)
+  productId      String // relation scalar field (used in the `@relation` attribute above)
   ProductOnPosts ProductOnPosts[]
 }
 
 model Brand {
-  id      Int       @id @default(autoincrement())
+  id      String    @id @default(cuid())
   name    String
   product Product[]
 }
 
 model Product {
-  id      Int              @id @default(autoincrement())
-  name    String
-  price   String
-  quantity String
-  brand   Brand            @relation(fields: [brandId], references: [id])
-  brandId Int // relation scalar field (used in the `@relation` attribute above)
-  posts   ProductOnPosts[]
-  devices Device[]
+  id       String           @id @default(cuid())
+  name     String
+  price    String?
+  quantity String?
+  brand    Brand            @relation(fields: [brandId], references: [id])
+  brandId  String // relation scalar field (used in the `@relation` attribute above)
+  posts    ProductOnPosts[]
+  devices  Device[]
 }
 
 model ProductOnPosts {
@@ -76,15 +105,15 @@ model ProductOnPosts {
   quantity   String
   total      String   @default("0")
   post       Order    @relation(fields: [postId], references: [id])
-  postId     Int // relation scalar field (used in the `@relation` attribute above)
+  postId     String // relation scalar field (used in the `@relation` attribute above)
   product    Product  @relation(fields: [productId], references: [id])
-  productId  Int // relation scalar field (used in the `@relation` attribute above)
+  productId  String // relation scalar field (used in the `@relation` attribute above)
   device     Device   @relation(fields: [deviceId], references: [id])
-  deviceId   Int
+  deviceId   String
   assignedAt DateTime @default(now())
   assignedBy String
 
-  @@id([postId, productId])
+  @@id([postId, deviceId])
 }
 
 enum Role {

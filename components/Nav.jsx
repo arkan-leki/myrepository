@@ -12,7 +12,7 @@ const Nav = () => {
     return (
         <>
             <div hidden={state}>
-                <nav className='fixed z-10 top-40 right-0 bg-gray-900 opacity-80 h-auto w-16
+                <nav className='fixed z-10 top-40 right-0 bg-gray-900 opacity-90 h-auto w-16
          text-white m-0 flex flex-col shadow-lg py-5 rounded-l-3xl '>
                     <SidebarItem icon={<FaCalculator size={28} />} text={'home'} goto='/' />
                     <SidebarItem icon={<BsCartPlus size={32} />} text={'orders'} goto='/orders' />

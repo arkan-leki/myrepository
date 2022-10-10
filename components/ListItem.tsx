@@ -1,8 +1,16 @@
+import { Order } from '@prisma/client'
 import Link from 'next/link'
 import React from 'react'
 import { BsArrowDown, BsArrowLeft, BsArrowRight, BsBookmark, BsInfo } from 'react-icons/bs'
 
-export const ListItem = ({ order, Id, Index, setIndex }) => {
+interface Props{
+    order: Order,
+    Id: Number,
+    Index: Number,
+    setIndex: (arg0: any)=> {}
+}
+
+export const ListItem = ({ order, Id, Index, setIndex }:Props) => {
     const HandleClick = () => {
         if (Id === Index) return setIndex(false)
         setIndex(Id)

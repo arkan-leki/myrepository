@@ -10,7 +10,7 @@ const Header = () => {
                 <HeaderItem title='PAYMENTS' Icon={CurrencyDollarIcon} goto={'/payments'}/>
                 <HeaderItem title='COLLECTIONS' Icon={ViewGridAddIcon} goto={'/collections'} />
                 <HeaderItem title='CUSTOMERS' Icon={UsersIcon} goto={'/customers'}  />
-                <HeaderItem title='ACCOUNT' Icon={UserIcon} />
+                <HeaderItem title='ACCOUNT' Icon={UserIcon} goto={'/auth'} />
             </div>
             <h1 className='object-contain bg-clip-text text-transparent bg-gradient-to-tr from-violet-500 to-fuchsia-500 font-semibold text-3xl h-10'>Hawkar Phone</h1>
         </header>

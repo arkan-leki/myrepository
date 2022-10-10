@@ -1,12 +1,9 @@
-import { Product, ProductOnPosts } from '@prisma/client'
 import React from 'react'
 import { HiOutlineXCircle } from 'react-icons/hi'
 
-
-
 const PostsOnOrder = ({post}) => {
     return (
-        <div className='flex flex-row justify-between items-center p-2 w-full text-start '>
+        <div className='flex flex-row justify-between items-start p-2 w-full text-start'>
             <img className='w-10 rounded mr-2' src="/Apple-IPhone-8-Plus-on-transparent-background-PNG.png" alt="" />
             <p className='whitespace-nowrap'>Product: {post.product}</p>
             <div className='m-2 px-1 bg-gray-600'>

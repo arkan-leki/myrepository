@@ -1,10 +1,11 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { Order } from '@prisma/client'
+import { Order, PrismaClient, Product } from '@prisma/client'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import prisma from '../../../lib/prisma'
+const prisma = new PrismaClient()
 
 type Data = {
-    // order: Order
+    order: Order,
+    product: Product[]
 }
 
 export default async function handler(
@@ -12,12 +13,11 @@ export default async function handler(
     res: NextApiResponse<Data>
 ) {
 
-
     if (req.method === 'GET') {
         try {
             const order = await prisma.order.findUnique({
                 where: {
-                    id: Number(req.query.id),
+                    id: req.query.id,
                 },
                 include: {
                     products: true,
@@ -35,8 +35,23 @@ export default async function handler(
             return res.status(200).json({ order, products })
         } catch (err) {
             console.error(err)
-            return res.status(500).json({ msg: 'Something went wrong' })
+            return res.status(500).json({ msg: 'Sodmething went wrong' })
         }
     }
-    res.status(200).json({ name: 'John Doe' })
+
+    if (req.method === 'POST') {
+        try {
+          let orderData = JSON.parse(req.body)
+          let data = await prisma.productOnPosts.create({ data: orderData })
+          return res.status(200).json({ data })
+        } catch (err) {
+          console.error(err)
+          return res.status(500).json({ msg: 'Something went wrong' })
+        }
+      } else {
+        return res.status(405).json({ msg: 'Method not allowed' })
+      }
+
+      
+    // res.status(200).json({ name: 'John Doe' })
 }

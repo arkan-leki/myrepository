@@ -3,9 +3,8 @@ import React, { useRef, useState } from 'react'
 import Header from '../components/Header'
 import Nav from '../components/Nav'
 import Image from 'next/image'
-import BrandItem from '../components/BrandItem'
 import DeviceItem from '../components/DeviceItem'
-import { BsPlusCircle, BsSearch } from 'react-icons/bs'
+import { BsSearch } from 'react-icons/bs'
 import { Modal } from '../components/Util'
 import { Brand, PrismaClient, Product } from '@prisma/client'
 import { InferGetStaticPropsType } from "next";
@@ -26,7 +25,7 @@ const collections = ({ brands, products }: InferGetStaticPropsType<typeof getSta
   const [productz, setproductz] = useState(products)
   const modelref = useRef()
   const brandid = useRef()
-  const price = useRef(0)
+  const price = useRef()
 
   async function saveProduct(data: any) {
     const res = await fetch('/api/products', {
@@ -41,10 +40,10 @@ const collections = ({ brands, products }: InferGetStaticPropsType<typeof getSta
 
   async function handleSave() {
     let saveData = await saveProduct({
-      name: modelref.current?.value,
-      price: price.current?.value,
-      quantity: 20.0,
-      brandId: Number(brandid.current?.value),
+      name: modelref.current?.value || '',
+      price: price.current?.value || '',
+      quantity: "1",
+      brandId: brandid.current?.value,
     })
     setproductz([...productz, saveData.data])
     handleClose()
@@ -64,9 +63,9 @@ const collections = ({ brands, products }: InferGetStaticPropsType<typeof getSta
             <div className='flex flex-col items-center  text-lg p-2 w-full text-center'>
               <BrandList brands={brands} />
 
-              <div className=' bg-blue-800 bg-opacity-20 my-2 p-3 flex flex-wrap w-full'>
-                <button className='btn mx-1 my-2 mb-0 w-full sm:w-auto' onClick={handleOpen}>Add New Device</button>
-                <div className='flex flex-1 my-2 mx-1'>
+              <div className=' bg-blue-800 bg-opacity-20 my-2 p-3 flex flex-wrap w-full md:space-x-2 space-y-2 md:space-y-0'>
+                <button className='btn w-full sm:w-auto ' onClick={handleOpen}>Add Device</button>
+                <div className='flex flex-1 '>
                   <input type="text" name='customer' className='input rounded-sm flex-1 py-3' placeholder='mobile name' />
                   <button className='btn'><BsSearch size={20} /></button>
                 </div>
@@ -97,7 +96,7 @@ const collections = ({ brands, products }: InferGetStaticPropsType<typeof getSta
               <input name='model' className='w-full input m-1 p-2 rounded bg-gray-600' type="text" placeholder='model' ref={modelref} />
             </div>
             <div className='w-3/4'>
-              <input name='price' className='w-full input m-1 p-2 rounded bg-gray-600' type="number" placeholder='$200' ref={price} />
+              <input name='price' className='w-full input m-1 p-2 rounded bg-gray-600' type="text" placeholder='$200' ref={price} />
             </div>
             <div className='w-3/4'>
               <input name='image' className='w-full input m-1 p-2 rounded bg-gray-600' type="file" placeholder='image' />
