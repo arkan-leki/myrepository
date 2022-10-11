@@ -99,9 +99,9 @@ export const AddSaleModal = ({ saveOrder, userId }) => {
 
   return (
     <>
-      <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 m-1"
+      <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-gray-0 focus:z-10 focus:outline-none focus:ring-1 m-1"
         onClick={setVisible}>
-        <span className="relative inline-flex gap-2 items-center px-3 py-3 space-x-2 text-sm font-medium text-green-600 bg-gray-800 bg-opacity-40 hover:bg-opacity-100 border border-green-300 rounded-md sm:py-2">
+        <span className="relative inline-flex gap-2 items-center px-3 py-3 space-x-2 text-sm font-medium text-green-100 bg-white bg-opacity-20  hover:bg-opacity-0 border border-green-100 rounded-md sm:py-2">
           <div>
             <FaCartPlus />
           </div>
@@ -171,7 +171,7 @@ export const AddProductModal = ({ saveOrder, userId }) => {
     <>
       <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 m-1"
         onClick={setVisible}>
-        <span className="relative inline-flex gap-2 items-center px-3 py-3 space-x-2 text-sm font-medium text-green-600 bg-gray-800 bg-opacity-40 hover:bg-opacity-100 border border-green-300 rounded-md sm:py-2">
+        <span className="relative inline-flex gap-2 items-center px-3 py-3 space-x-2 text-sm font-medium text-green-100 bg-white bg-opacity-20  hover:bg-opacity-0 border border-green-100 rounded-md sm:py-2">
           <div>
             <FaRegPlusSquare />
           </div>
