@@ -1,7 +1,7 @@
 import { XCircleIcon } from '@heroicons/react/solid';
 import React, { useEffect, useRef } from 'react'
 import { useState } from "react";
-import { FaTruckLoading, FaCartPlus } from 'react-icons/fa';
+import { FaTruckLoading, FaCartPlus, FaRegPlusSquare } from 'react-icons/fa';
 
 export const AddOrderModal = ({ saveOrder, userId }) => {
   const [customers, setCustomers] = useState([]);
@@ -101,12 +101,12 @@ export const AddSaleModal = ({ saveOrder, userId }) => {
     <>
       <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 m-1"
         onClick={setVisible}>
-        <span className="relative inline-flex items-center px-3 py-3 space-x-2 text-sm font-medium text-green-600 bg-gray-800 bg-opacity-40 hover:bg-opacity-100 border border-green-300 rounded-md sm:py-2">
+        <span className="relative inline-flex gap-2 items-center px-3 py-3 space-x-2 text-sm font-medium text-green-600 bg-gray-800 bg-opacity-40 hover:bg-opacity-100 border border-green-300 rounded-md sm:py-2">
           <div>
             <FaCartPlus />
           </div>
           <div className="hidden sm:block">
-            زیادکردنی فرۆش
+            فرۆش
           </div>
         </span>
       </button>
@@ -144,6 +144,96 @@ export const AddSaleModal = ({ saveOrder, userId }) => {
     </>
   )
 }
+
+export const AddProductModal = ({ saveOrder, userId }) => {
+  const [customers, setCustomers] = useState([]);
+  const [handleModal, setHandleModal] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const customerRef = useRef()
+  const setVisible = () => {
+    setHandleModal(true);
+  }
+
+  const handleClose = () => {
+    setHandleModal(false);
+  }
+
+  async function handleSave() {
+    await saveOrder({
+      title: "Cool helmet.",
+      authorId: userId,
+      customerId: customerRef.current?.value,
+    })
+    setHandleModal(false);
+  }
+
+  return (
+    <>
+      <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 m-1"
+        onClick={setVisible}>
+        <span className="relative inline-flex gap-2 items-center px-3 py-3 space-x-2 text-sm font-medium text-green-600 bg-gray-800 bg-opacity-40 hover:bg-opacity-100 border border-green-300 rounded-md sm:py-2">
+          <div>
+            <FaRegPlusSquare />
+          </div>
+          <div className="hidden sm:block">
+            کاڵا
+          </div>
+        </span>
+      </button>
+
+      <Modal visible={handleModal} onClose={handleClose} title={"زیادکردنی کاڵا"} >
+        <div className='relative w-full flex flex-col'>
+          <div className='flex flex-row justify-between items-baseline'>
+            <label htmlFor="customer">بکە</label>
+            <select id="customer" name="customer" className='w-3/4 m-1 p-2 rounded bg-gray-600' ref={customerRef}>
+              {loading ? <select name="loading" id="0"><FaTruckLoading /></select> : customers.map((customer, i) => <option key={i} value={customer.id}>{customer.name}</option>)}
+            </select>
+          </div>
+          <div className='flex flex-row justify-between items-baseline'>
+            <label htmlFor="product">کۆمپانیا</label>
+            <select id="product" name="product" className='w-3/4 m-1 p-2 rounded bg-gray-600'>
+              <option value="volvo">Odd</option>
+              <option value="saab">Wholesale</option>
+            </select>
+          </div>
+          <div className='flex flex-row justify-between items-baseline'>
+            <label htmlFor="product">جۆر</label>
+            <select id="product" name="product" className='w-3/4 m-1 p-2 rounded bg-gray-600'>
+              <option value="volvo">Odd</option>
+              <option value="saab">Wholesale</option>
+            </select>
+          </div>
+          <hr className='my-2' />
+          <div className='flex flex-row justify-between items-baseline'>
+            <label htmlFor="product">ناو</label>
+            <input name='product' className='w-3/4 m-1 p-2 rounded bg-gray-600' type="text" />
+          </div>
+          <div className='flex flex-row justify-between items-baseline'>
+            <label htmlFor="product">کۆد</label>
+            <input name='product' className='w-3/4 m-1 p-2 rounded bg-gray-600' type="text" />
+          </div>
+          <div className='flex flex-row justify-between items-baseline'>
+            <label htmlFor="product">وەجبە</label>
+            <input name='product' className='w-3/4 m-1 p-2 rounded bg-gray-600' type="text" />
+          </div>
+          <div className='flex flex-row justify-between items-baseline'>
+            <label htmlFor="product">نرخ</label>
+            <input name='product' className='w-3/4 m-1 p-2 rounded bg-gray-600' type="text" />
+          </div>
+          <div className='flex flex-row justify-between items-baseline'>
+            <label htmlFor="product">نسبە</label>
+            <input name='product' className='w-3/4 m-1 p-2 rounded bg-gray-600' type="text" />
+          </div>
+          <hr className='my-2' />
+
+          <button className="btn rounded-sm float-right "
+            onClick={handleSave}>زیادکردن</button>
+        </div>
+      </Modal>
+    </>
+  )
+}
+
 
 export const AddCustomerModal = ({ saveCustomer, initialState = false }) => {
   const [handleModal, setHandleModal] = useState(false)

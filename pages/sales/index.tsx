@@ -1,5 +1,5 @@
-import Layout from '../components/Layout'
-import Sales from '../components/Sales'
+import Layout from '../../components/Layout'
+import Sales from '../../components/Sales'
 
 const sales = () => {
   return (

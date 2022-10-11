@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { FaEdit, FaFolderOpen, FaTrashAlt } from "react-icons/fa"
 
-const TableRow = ({ open }) => {
+const TableRowItem = ({open}) => {
     return (
         <tr className='bg-neutral-800 bg-opacity-20 hover:bg-opacity-30'>
             <td className="py-3 pl-4">
@@ -19,7 +19,14 @@ const TableRow = ({ open }) => {
                 </div>
             </td>
             <td className="font-medium">
-                1
+                <img
+                    src='https://banner2.cleanpng.com/20180325/sxq/kisspng-iphone-4-iphone-8-plus-iphone-5-iphone-x-iphone-apple-5ab72c72740db3.4853433615219539064754.jpg'
+                    // src="https://firebasestorage.googleapis.com/v0/b/resturant-33fd6.appspot.com/o/quiz-app-screens.png?alt=media&token=b29b9349-63c4-461e-b275-cd96e436eb24"
+                    alt="Picture of the author"
+                    // width={500}
+                    // height={500}
+                    className='w-10 '
+                />
             </td>
             <td className="">
                 iPhone 14
@@ -30,7 +37,6 @@ const TableRow = ({ open }) => {
             <td className="">
                 24/2/2023
             </td>
-
             <td className="font-medium">
                 <Link href={open}>
                     <FaFolderOpen className="text-cyan-500 hover:text-cyan-700 hover:cursor-pointer" />
@@ -48,4 +54,4 @@ const TableRow = ({ open }) => {
     )
 }
 
-export default TableRow
+export default TableRowItem

@@ -18,12 +18,12 @@ const Layout = ({ children }) => {
             <main dir="rtl">
                 <Header sate={sate} handleState={handleState} />
                 <ASideBar sate={sate} />
-                <div className={(!sate) ? `md:mr-44 `: ''} dir='rtl'>
+                <div className={(!sate) ? `md:mr-52 `: 'mr-0'} dir='rtl'>
                     {children}
                 </div>
             </main>
 
-            <footer className={(!sate) ? `flex h-24 w-full items-center justify-center border-t md:mr-44 `:` flex h-24 w-full items-center justify-center border-t`}>
+            <footer className={(!sate) ? `flex h-24 w-full items-center justify-center border-t md:mr-56 `:` flex h-24 w-full items-center justify-center border-t`}>
                 <a
                     className="flex items-center justify-center gap-2"
                     href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"

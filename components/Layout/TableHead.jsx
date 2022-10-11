@@ -24,6 +24,9 @@ const TableHead = ({ rows }) => {
                         {row}
                     </th>))}
                 <th scope="col">
+                    پیشاندان
+                </th>
+                <th scope="col">
                     دەستکاری
                 </th>
                 <th scope="col">
