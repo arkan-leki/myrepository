@@ -1,5 +1,5 @@
 import React from 'react'
-import TableHead from '../Layout/TableHead'
+import TableHead from '../table/TableHead'
 import { FaFilter, FaSearch } from 'react-icons/fa'
 import ItemOrderedRecord from './ItemOrderedRecord';
 

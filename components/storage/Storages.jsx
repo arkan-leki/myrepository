@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaFilter, FaSearch } from 'react-icons/fa'
-import TableHead from '../Layout/TableHead'
+import TableHead from '../table/TableHead'
 import TableRowItem from './TableRowItem'
 import { AddProductModal } from '../Util'
 

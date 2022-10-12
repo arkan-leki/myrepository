@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { FaCalendarTimes, FaPlusCircle, FaPrint, FaRegEdit } from 'react-icons/fa'
 import Layout from '../../components/Layout'
-import TableHead from '../../components/Layout/TableHead'
+import TableHead from '../../components/table/TableHead'
 import { AddItemModal } from '../../components/Util'
 
 const sale = (props) => {
