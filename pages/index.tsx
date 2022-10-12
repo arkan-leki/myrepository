@@ -4,7 +4,7 @@ import Header from '../components/Layout/Header'
 import ASideBar from '../components/Layout/ASideBar'
 // import prisma from '../lib/prisma'
 import { Customer, Order, PrismaClient } from '@prisma/client'
-import Dashpool from '../components/Dashpool'
+import Dashpool from '../components/dashboard/Dashpool'
 import Layout from '../components/Layout'
 
 const prisma = new PrismaClient()

@@ -54,7 +54,7 @@ const Storages = () => {
                             <TableHead rows={['کۆد', 'کاڵا', 'نرخ', 'رێکەوت']} />
                             <tbody className="divide-y divide-gray-200">
                                 {items?.map((item, i) => (
-                                    <TableRowItem key={i} item={item} open={'/'} />
+                                    <TableRowItem key={i} item={item} open={`/storages/${i}`} />
                                 ))}
                             </tbody>
                         </table>

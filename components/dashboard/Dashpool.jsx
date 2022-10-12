@@ -1,6 +1,6 @@
 import { CurrencyDollarIcon, ReceiptRefundIcon, ShoppingCartIcon, InboxInIcon } from '@heroicons/react/solid'
-import Cashair from './Cashair'
-import WidgetCart from './WidgetCart'
+import Cashair from '../Cashair'
+import WidgetCart from '../WidgetCart'
 const Dashpool = () => {
     return (
         <div className=''>
