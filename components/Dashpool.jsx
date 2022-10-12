@@ -1,5 +1,5 @@
-import { FaArrowAltCircleLeft } from 'react-icons/fa';
 import { CurrencyDollarIcon, ReceiptRefundIcon, ShoppingCartIcon, InboxInIcon } from '@heroicons/react/solid'
+import Cashair from './Cashair'
 import WidgetCart from './WidgetCart'
 const Dashpool = () => {
     return (
@@ -26,6 +26,10 @@ const Dashpool = () => {
                     }
                         color='bg-red-600' />
                 </div>
+            </div>
+
+            <div>
+                <Cashair />
             </div>
         </div>
     )

@@ -1,7 +1,7 @@
 import { XCircleIcon } from '@heroicons/react/solid';
 import React, { useEffect, useRef } from 'react'
 import { useState } from "react";
-import { FaTruckLoading, FaCartPlus, FaRegPlusSquare } from 'react-icons/fa';
+import { FaTruckLoading, FaCartPlus, FaRegPlusSquare, FaPlusCircle } from 'react-icons/fa';
 
 export const AddOrderModal = ({ saveOrder, userId }) => {
   const [customers, setCustomers] = useState([]);
@@ -222,6 +222,82 @@ export const AddProductModal = ({ saveOrder, userId }) => {
           </div>
           <div className='flex flex-row justify-between items-baseline'>
             <label htmlFor="product">نسبە</label>
+            <input name='product' className='w-3/4 m-1 p-2 rounded bg-gray-600' type="text" />
+          </div>
+          <hr className='my-2' />
+
+          <button className="btn rounded-sm float-right "
+            onClick={handleSave}>زیادکردن</button>
+        </div>
+      </Modal>
+    </>
+  )
+}
+
+export const AddItemModal = ({ saveOrder, userId }) => {
+  const [customers, setCustomers] = useState(['کارەبای', 'کۆسماتیک', 'دەرمانخانەی']);
+  const [handleModal, setHandleModal] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const customerRef = useRef()
+  const setVisible = () => {
+    setHandleModal(true);
+  }
+
+  const handleClose = () => {
+    setHandleModal(false);
+  }
+
+  async function handleSave() {
+    await saveOrder({
+      title: "Cool helmet.",
+      authorId: userId,
+      customerId: customerRef.current?.value,
+    })
+    setHandleModal(false);
+  }
+
+  return (
+    <>
+      <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-blue-50 focus:z-10 focus:outline-none focus:ring-1 m-1"
+        onClick={setVisible}>
+        <span className="relative inline-flex gap-2 items-center px-3 py-3 space-x-2 text-sm font-medium text-blue-900 bg-gray-300 bg-opacity-40  hover:bg-opacity-0 border border-blue-100 rounded-md sm:py-2">
+          <div>
+            <FaPlusCircle />
+          </div>
+          <div className="hidden sm:block">
+            کاڵا
+          </div>
+        </span>
+      </button>
+
+      <Modal visible={handleModal} onClose={handleClose} title={"زیادکردنی کاڵا"} >
+        <div className='relative w-full flex flex-col'>
+          <div className='flex flex-row justify-between items-baseline'>
+            <label htmlFor="customer">بکە</label>
+            <select id="customer" name="customer" className='w-3/4 m-1 p-2 rounded bg-gray-600' ref={customerRef}>
+              {loading ? <select name="loading" id="0"><FaTruckLoading /></select> : customers.map((customer, i) => <option key={i} value={customer}>{customer}</option>)}
+            </select>
+          </div>
+          <div className='flex flex-row justify-between items-baseline'>
+            <label htmlFor="customer">کۆد</label>
+            <select id="customer" name="customer" className='w-3/4 m-1 p-2 rounded bg-gray-600' ref={customerRef}>
+              {loading ? <select name="loading" id="0"><FaTruckLoading /></select> : customers.map((customer, i) => <option key={i} value={customer}>{customer}</option>)}
+            </select>
+          </div>
+          <div className='flex flex-row justify-between items-baseline'>
+            <label htmlFor="product">وەجبە</label>
+            <input name='product' className='w-3/4 m-1 p-2 rounded bg-gray-600' type="text" />
+          </div>
+          <div className='flex flex-row justify-between items-baseline'>
+            <label htmlFor="product">کاڵا</label>
+            <input name='product' className='w-3/4 m-1 p-2 rounded bg-gray-600' type="text" />
+          </div>
+          <div className='flex flex-row justify-between items-baseline'>
+            <label htmlFor="product">نرخ</label>
+            <input name='product' className='w-3/4 m-1 p-2 rounded bg-gray-600' type="text" />
+          </div>
+          <div className='flex flex-row justify-between items-baseline'>
+            <label htmlFor="product">دانە</label>
             <input name='product' className='w-3/4 m-1 p-2 rounded bg-gray-600' type="text" />
           </div>
           <hr className='my-2' />

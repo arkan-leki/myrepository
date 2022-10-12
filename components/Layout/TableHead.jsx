@@ -23,13 +23,13 @@ const TableHead = ({ rows }) => {
                     <th scope="col" key={i}>
                         {row}
                     </th>))}
-                <th scope="col">
+                <th className='print:hidden' scope="col">
                     پیشاندان
                 </th>
-                <th scope="col">
+                <th className='print:hidden' scope="col">
                     دەستکاری
                 </th>
-                <th scope="col">
+                <th className='print:hidden' scope="col">
                     سڕینەوە
                 </th>
             </tr>

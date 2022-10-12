@@ -21,7 +21,6 @@ const TableRowItem = ({open}) => {
             <td className="font-medium">
                 <img
                     src='https://banner2.cleanpng.com/20180325/sxq/kisspng-iphone-4-iphone-8-plus-iphone-5-iphone-x-iphone-apple-5ab72c72740db3.4853433615219539064754.jpg'
-                    // src="https://firebasestorage.googleapis.com/v0/b/resturant-33fd6.appspot.com/o/quiz-app-screens.png?alt=media&token=b29b9349-63c4-461e-b275-cd96e436eb24"
                     alt="Picture of the author"
                     // width={500}
                     // height={500}

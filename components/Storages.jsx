@@ -51,10 +51,10 @@ const Storages = () => {
                 <div className="p-1.5 w-full inline-block align-middle" dir='rtl'>
                     <div className="overflow-auto scrollbar-thin border border-gray-500 rounded-lg">
                         <table>
-                            <TableHead rows={['کۆد', 'کاڵا',  'نرخ', 'رێکەوت']} />
+                            <TableHead rows={['کۆد', 'کاڵا', 'نرخ', 'رێکەوت']} />
                             <tbody className="divide-y divide-gray-200">
                                 {items?.map((item, i) => (
-                                    <TableRowItem key={i} item={item}  open={'/'} />
+                                    <TableRowItem key={i} item={item} open={'/'} />
                                 ))}
                             </tbody>
                         </table>

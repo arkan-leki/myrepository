@@ -55,7 +55,7 @@ const Sales = () => {
                             <TableHead rows={['ژمارەی وەسڵ', 'کڕیار', 'کۆی وەسڵ','رێکەوت']} />
                             <tbody className="divide-y divide-gray-200">
                                 {orders?.map((order, i) => (
-                                    <TableRow key={i} order={order} open={'/'} />
+                                    <TableRow key={i} order={order} open={`/sales/${order}`} />
                                 ))}
                             </tbody>
                         </table>

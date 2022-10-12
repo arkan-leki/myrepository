@@ -14,8 +14,8 @@ const ASideBar = ({ sate }) => {
                 <nav className="flex flex-col whitespace-nowrap list-none">
                     <ul className="flex-1 flex-col  whitespace-nowrap list-none ">
                         <AsideItem icon={<FaHome size={28} />} text={'ماڵەوە'} goto='/' />
-                        <AsideItem icon={<FaCartArrowDown size={28} />} text={'فرۆشتنەکان'} goto='sales' />
-                        <AsideItem icon={<FaBoxes size={28} />} text={'کۆگا'} goto='storage' />
+                        <AsideItem icon={<FaCartArrowDown size={28} />} text={'فرۆشتنەکان'} goto='/sales' />
+                        <AsideItem icon={<FaBoxes size={28} />} text={'کۆگا'} goto='/storages' />
                         <AsideItem icon={<FaBoxOpen size={28} />} text={'باری هاتوو'} goto='sales' />
                         <AsideItem icon={<FaMoneyBill size={28} />} text={'پارەی گەراوە'} goto='sales' />
                         <AsideItem icon={<FaMoneyBillWave size={28} />} text={'خەرجی'} goto='sales' />
