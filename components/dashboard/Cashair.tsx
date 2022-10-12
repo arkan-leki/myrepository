@@ -37,17 +37,17 @@ const Cashair = () => {
                         <div className='flex-1 flex flex-col m-2 items-baseline'>
                             <label htmlFor="customer">بنکە</label>
                             <select id="customer" name="customer" className='w-3/4 m-1 p-1 rounded bg-gray-300 text-black'>
-                                <option value={1}>{'موبایل ئایفۆن'}</option>
+                                <option defaultValue={1}>{'موبایل ئایفۆن'}</option>
                             </select>
                         </div>
                         <div className='flex-1 flex flex-col m-2 items-baseline'>
                             <label htmlFor="customer">کۆد</label>
                             <select id="customer" name="customer" className='w-3/4 m-1 p-1 rounded bg-gray-300 text-black'>
-                                <option value={1}>{'هاوکار شۆ'}</option>
+                                <option defaultValue={1}>{'هاوکار شۆ'}</option>
                             </select>
                         </div>
                         <div>
-                            <input type="button" className='btn bg-red-700' value="پەسەند" />
+                            <input type="button" className='btn bg-red-700' defaultValue="پەسەند" />
                         </div>
                         <hr className='my-2' />
                         <div className='m-4 flex flex-col gap-1 '>
@@ -55,7 +55,7 @@ const Cashair = () => {
                                 <p>کۆی وەسڵ</p>
                                 <p>484</p>
                             </div>
-                            <input type="button" className='btn w-full' value="نەقد" />
+                            <input type="button" className='btn w-full' defaultValue="نەقد" />
                         </div>
 
                     </div>

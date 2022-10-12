@@ -16,13 +16,13 @@ const ASideBar = ({ sate }) => {
                         <AsideItem icon={<FaHome size={28} />} text={'ماڵەوە'} goto='/' />
                         <AsideItem icon={<FaCartArrowDown size={28} />} text={'فرۆشتنەکان'} goto='/sales' />
                         <AsideItem icon={<FaBoxes size={28} />} text={'کۆگا'} goto='/storages' />
-                        <AsideItem icon={<FaBoxOpen size={28} />} text={'باری هاتوو'} goto='sales' />
-                        <AsideItem icon={<FaMoneyBill size={28} />} text={'پارەی گەراوە'} goto='sales' />
-                        <AsideItem icon={<FaMoneyBillWave size={28} />} text={'خەرجی'} goto='sales' />
-                        <AsideItem icon={<FaUsers size={28} />} text={'کڕیاران'} goto='sales' />
-                        <AsideItem icon={<FaCcAmazonPay size={28} />} text={'کۆمپانیاکان'} goto='sales' />
+                        {/* <AsideItem icon={<FaBoxOpen size={28} />} text={'باری هاتوو'} goto='sales' />
+                        <AsideItem icon={<FaMoneyBill size={28} />} text={'پارەی گەراوە'} goto='sales' /> */}
+                        {/* <AsideItem icon={<FaMoneyBillWave size={28} />} text={'خەرجی'} goto='sales' /> */}
+                        <AsideItem icon={<FaUsers size={28} />} text={'کڕیاران'} goto='/customers' />
+                        {/* <AsideItem icon={<FaCcAmazonPay size={28} />} text={'کۆمپانیاکان'} goto='sales' />
                         <AsideItem icon={<FaChartBar size={28} />} text={'ئامار'} goto='sales' />
-                        <AsideItem icon={<FaCarAlt size={28} />} text={'گەراوە'} goto='sales' />
+                        <AsideItem icon={<FaCarAlt size={28} />} text={'گەراوە'} goto='sales' /> */}
                     </ul>
                 </nav>
             </div>

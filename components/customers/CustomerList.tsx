@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { FaFilter, FaSearch } from 'react-icons/fa';
 import TableHead from '../table/TableHead';
-import TableRow from './TableRowSales';
-import { AddSaleModal } from "../Util";
+import { AddCustomerModal } from '../Util';
+import CustomerTableRow from './CustomerTableRow';
 
-const Sales = () => {
+const CustomerList = () => {
     const [orders, setOrders] = useState([1, 2, 4]);
-    async function handeSave(data) {
+    async function handeSave(data: any) {
         setOrders([...orders, data])
     }
 
@@ -14,7 +14,7 @@ const Sales = () => {
         <div className="flex flex-col m-1">
             <div className=" overflow-x-auto ">
                 <div className="flex justify-between gap-1 items-center py-3 pl-2">
-                    <h3 className='text-lg font-bold'>فرۆشتنەکان</h3>
+                    <h3 className='text-lg font-bold'>کڕیارەکان</h3>
                     <div className="flex-1 relative max-w-xs">
                         <label htmlFor="hs-table-search" className="sr-only">
                             گەڕان
@@ -33,7 +33,7 @@ const Sales = () => {
 
                     <div className="flex items-center space-x-2">
                         <div className="relative">
-                            <AddSaleModal saveOrder={handeSave} />
+                            <AddCustomerModal saveCustomer={handeSave} />
                             <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 m-1">
                                 <span className="relative inline-flex items-center px-3 py-3 space-x-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-md sm:py-2">
                                     <div>
@@ -52,10 +52,10 @@ const Sales = () => {
                 <div className="p-1.5 w-full inline-block align-middle " dir='rtl'>
                     <div className="overflow-auto scrollbar-thin border border-gray-500 rounded-lg">
                         <table>
-                            <TableHead rows={['ژمارەی وەسڵ', 'کڕیار', 'کۆی وەسڵ','رێکەوت']} />
+                            <TableHead rows={['فرۆشگا', 'کۆد ', 'خاوەن', 'ژ.پەیوەندی', 'ناونیشان', 'قەرز']} />
                             <tbody className="divide-y divide-gray-200">
                                 {orders?.map((order, i) => (
-                                    <TableRow key={i} order={order} open={`/sales/${order}`} />
+                                    <CustomerTableRow key={i}/>
                                 ))}
                             </tbody>
                         </table>
@@ -66,4 +66,4 @@ const Sales = () => {
     )
 }
 
-export default Sales
+export default CustomerList

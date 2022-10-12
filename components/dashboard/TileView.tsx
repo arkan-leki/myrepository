@@ -22,11 +22,11 @@ const TileView = () => {
                 <div className='flex flex-col gap-2'>
                     <div className='flex flex-row '>
                         <span className='flex items-center p-2 bg-green-600 text-center'><FaBoxOpen color='white' /></span>
-                        <input className='border p-2 px-4 md:w-32 w-10 shadow-inner shadow-gray-300 border-gray-300' value={22} type="number" />
+                        <input className='border p-2 px-4 md:w-32 w-10 shadow-inner shadow-gray-300 border-gray-300' defaultValue={22} type="number" />
                     </div>
                     <div className='flex flex-row'>
                         <span className='flex items-center  p-2 bg-green-600'><FaDollarSign color='white' /></span>
-                        <input className='border p-2 px-4 md:w-32 w-10 shadow-inner shadow-gray-300 border-gray-300' value={22} type="number" />
+                        <input className='border p-2 px-4 md:w-32 w-10 shadow-inner shadow-gray-300 border-gray-300' defaultValue={22} type="number" />
                     </div>
                 </div>
                 <div className='items-end'>

@@ -1,7 +1,7 @@
 import { XCircleIcon } from '@heroicons/react/solid';
 import React, { useEffect, useRef } from 'react'
 import { useState } from "react";
-import { FaTruckLoading, FaCartPlus, FaRegPlusSquare, FaPlusCircle } from 'react-icons/fa';
+import { FaTruckLoading, FaCartPlus, FaRegPlusSquare, FaPlusCircle, FaUserPlus } from 'react-icons/fa';
 
 export const AddOrderModal = ({ saveOrder, userId }) => {
   const [customers, setCustomers] = useState([]);
@@ -73,8 +73,6 @@ export const AddOrderModal = ({ saveOrder, userId }) => {
   )
 }
 
-
-
 export const AddSaleModal = ({ saveOrder, userId }) => {
   const [customers, setCustomers] = useState([]);
   const [handleModal, setHandleModal] = useState(false)
@@ -99,7 +97,7 @@ export const AddSaleModal = ({ saveOrder, userId }) => {
 
   return (
     <>
-      <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-gray-0 focus:z-10 focus:outline-none focus:ring-1 m-1"
+      <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-green-800 focus:z-10 focus:outline-none focus:ring-1 m-1"
         onClick={setVisible}>
         <span className="relative inline-flex gap-2 items-center px-3 py-3 space-x-2 text-sm font-medium text-green-100 bg-white bg-opacity-20  hover:bg-opacity-0 border border-green-100 rounded-md sm:py-2">
           <div>
@@ -169,7 +167,7 @@ export const AddProductModal = ({ saveOrder, userId }) => {
 
   return (
     <>
-      <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 m-1"
+      <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-purple-800 focus:z-10 focus:outline-none focus:ring-1 m-1"
         onClick={setVisible}>
         <span className="relative inline-flex gap-2 items-center px-3 py-3 space-x-2 text-sm font-medium text-green-100 bg-white bg-opacity-20  hover:bg-opacity-0 border border-green-100 rounded-md sm:py-2">
           <div>
@@ -258,9 +256,9 @@ export const AddItemModal = ({ saveOrder, userId }) => {
 
   return (
     <>
-      <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-blue-50 focus:z-10 focus:outline-none focus:ring-1 m-1"
+      <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-blue-800 focus:z-10 focus:outline-none focus:ring-1 m-1"
         onClick={setVisible}>
-        <span className="relative inline-flex gap-2 items-center px-3 py-3 space-x-2 text-sm font-medium text-blue-900 bg-gray-300 bg-opacity-40  hover:bg-opacity-0 border border-blue-100 rounded-md sm:py-2">
+        <span className="relative inline-flex gap-2 items-center px-3 py-3 space-x-2 text-sm font-medium text-green-100 bg-white bg-opacity-20  hover:bg-opacity-0 border border-green-100 rounded-md sm:py-2">
           <div>
             <FaPlusCircle />
           </div>
@@ -336,20 +334,42 @@ export const AddCustomerModal = ({ saveCustomer, initialState = false }) => {
 
   return (
     <>
-      <button className='btn rounded' onClick={setVisible}>Place New Customer</button>
-
-      <Modal visible={handleModal} onClose={handleClose} title={"Add New Order"} >
+      <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-blue-800 focus:z-10 focus:outline-none focus:ring-1 m-1"
+        onClick={setVisible}>
+        <span className="relative inline-flex gap-2 items-center px-3 py-3 space-x-2 text-sm font-medium text-green-100 bg-white bg-opacity-20  hover:bg-opacity-0 border border-green-100 rounded-md sm:py-2">
+          <div>
+            <FaUserPlus/>
+          </div>
+          <div className="hidden sm:block">
+            کڕیار
+          </div>
+        </span>
+      </button>
+      <Modal visible={handleModal} onClose={handleClose} title={"کڕیاری نوێ"} >
         <div className='flex flex-col  w-80 items-center'>
           <div className='w-3/4'>
-            {/* <label htmlFor="customer">Customer Name :</label> */}
-            <input className='w-full input m-1 p-2 rounded bg-gray-600' name='title' type="text" placeholder='name' ref={name} />
+            <label htmlFor="customer">ناوی کڕیار</label>
+            <input className='w-full input m-1 p-2 rounded bg-gray-600' name='title' type="text" placeholder='محمد احمد' ref={name} />
           </div>
           <div className='w-3/4'>
-            {/* <label htmlFor="address">Date & Time :</label> */}
-            <input name='address' className='w-full input m-1 p-2 rounded bg-gray-600' type="emaol" placeholder='address' ref={adress} />
+            <label htmlFor="address">ناوی فرۆشگا</label>
+            <input name='address' className='w-full input m-1 p-2 rounded bg-gray-600' type="emaol" placeholder='مارکیتی' ref={adress} />
           </div>
-          <button className="btn float-right w-2/4 rounded "
-            onClick={handleSave}>add</button>
+          <div className='w-3/4'>
+            <label htmlFor="address">ژ.پەیوەندی</label>
+            <input name='address' className='w-full input m-1 p-2 rounded bg-gray-600' type="emaol" placeholder='0770' ref={adress} />
+          </div>
+          <div className='w-3/4'>
+            <label htmlFor="address">ناونیشان</label>
+            <input name='address' className='w-full input m-1 p-2 rounded bg-gray-600' type="emaol" placeholder='سلێمانیی' ref={adress} />
+          </div>
+          <div className='w-3/4'>
+            <label htmlFor="address">کۆد</label>
+            <input name='address' className='w-full input m-1 p-2 rounded bg-gray-600' type="emaol" placeholder='099' ref={adress} />
+          </div>
+          <hr className='my-2' />
+          <button className="btn bg-opacity-30 text-white float-right w-4/5 rounded "
+            onClick={handleSave}>زیاد کردن</button>
         </div>
       </Modal>
     </>
