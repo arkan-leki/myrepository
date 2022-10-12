@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaFilter, FaSearch } from 'react-icons/fa'
 import TableHead from '../Layout/TableHead'
-import TableRowItem from '../TableRowItem'
+import TableRowItem from './TableRowItem'
 import { AddProductModal } from '../Util'
 
 const Storages = () => {

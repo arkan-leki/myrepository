@@ -1,7 +1,7 @@
 import Layout from '../../components/Layout'
-import Sales from '../../components/Sales'
+import Sales from '../../components/sales/Sales'
 
-const sales = () => {
+const sales = (props) => {
   return (
     <Layout>
         <Sales/>

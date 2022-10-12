@@ -1,5 +1,5 @@
 import { FaShoppingBasket } from 'react-icons/fa';
-import TileView from '../products/TileView';
+import TileView from './TileView';
 
 const Cashair = () => {
     return (

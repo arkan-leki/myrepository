@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { FaCartPlus, FaFilter, FaSearch } from 'react-icons/fa';
-import TableHead from './Layout/TableHead';
+import TableHead from '../Layout/TableHead';
 import TableRow from './TableRowSales';
-import { AddSaleModal } from "./Util";
+import { AddSaleModal } from "../Util";
 
 const Sales = () => {
     const [orders, setOrders] = useState([1, 2, 4]);
