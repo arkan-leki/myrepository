@@ -1,8 +1,8 @@
 import React from 'react'
 import { FaFilter, FaSearch } from 'react-icons/fa'
-import TableHead from './Layout/TableHead'
-import TableRowItem from './TableRowItem'
-import { AddProductModal } from './Util'
+import TableHead from '../Layout/TableHead'
+import TableRowItem from '../TableRowItem'
+import { AddProductModal } from '../Util'
 
 const Storages = () => {
     const [items, setItems] = React.useState([1, 2, 4]);

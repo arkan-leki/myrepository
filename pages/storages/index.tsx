@@ -1,5 +1,5 @@
 import React from 'react'
-import Storages from '../../components/Storages'
+import Storages from '../../components/storage/Storages'
 import Layout from '../../components/Layout'
 
 interface Props {
