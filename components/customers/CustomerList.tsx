@@ -55,7 +55,7 @@ const CustomerList = () => {
                             <TableHead rows={['فرۆشگا', 'کۆد ', 'خاوەن', 'ژ.پەیوەندی', 'ناونیشان', 'قەرز']} />
                             <tbody className="divide-y divide-gray-200">
                                 {orders?.map((order, i) => (
-                                    <CustomerTableRow key={i}/>
+                                    <CustomerTableRow key={i} data={order}/>
                                 ))}
                             </tbody>
                         </table>

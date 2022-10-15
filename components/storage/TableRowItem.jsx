@@ -22,8 +22,6 @@ const TableRowItem = ({open}) => {
                 <img
                     src='https://banner2.cleanpng.com/20180325/sxq/kisspng-iphone-4-iphone-8-plus-iphone-5-iphone-x-iphone-apple-5ab72c72740db3.4853433615219539064754.jpg'
                     alt="Picture of the author"
-                    // width={500}
-                    // height={500}
                     className='w-10 '
                 />
             </td>

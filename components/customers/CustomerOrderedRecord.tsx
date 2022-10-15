@@ -1,7 +1,11 @@
 import Link from "next/link"
 import { FaEdit, FaFolderOpen, FaTrashAlt } from "react-icons/fa"
 
-const CustomerTableRow = ({data}) => {
+interface Props {
+    data: any;
+}
+
+const CustomerOrderedRecord = ({ data }: Props) => {
     return (
         <tr className='bg-neutral-800 bg-opacity-20 hover:bg-opacity-30'>
             <td className="py-3 pl-4">
@@ -19,26 +23,22 @@ const CustomerTableRow = ({data}) => {
                 </div>
             </td>
             <td className="font-medium">
-                133
+                {data}
             </td>
             <td className="">
-                پێشانگای راستی
+                hawal phone
             </td>
             <td className="">
-                محمد
-            </td>
-            <td className="">
-                07809647777
-            </td>
-            <td className="">
-                سلێمانی
+                22
             </td>
             <td className="">
                 $300
             </td>
-
+            <td className="">
+                24/2/2023
+            </td>
             <td className="font-medium">
-                <Link href={`/customers/${data}`}>
+                <Link href={`/sales/${data}`}>
                     <FaFolderOpen className="text-cyan-500 hover:text-cyan-700 hover:cursor-pointer" />
                 </Link>
             </td>
@@ -54,4 +54,4 @@ const CustomerTableRow = ({data}) => {
     )
 }
 
-export default CustomerTableRow
+export default CustomerOrderedRecord

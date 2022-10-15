@@ -1,11 +1,15 @@
 import { useRouter } from 'next/router'
 import React from 'react'
-import { FaCalendarTimes, FaEdit, FaFolderOpen, FaPlusCircle, FaPrint, FaRegEdit, FaTrashAlt } from 'react-icons/fa'
+import { FaCalendarTimes, FaMoneyCheck, FaPrint, FaRegEdit, FaShoppingBasket } from 'react-icons/fa'
+import CustomerOrderRow from '../../components/customers/CustomerOrderRow'
+import TableHeadCustomerOrder from '../../components/customers/TableHeadCustomerOrder'
 import Layout from '../../components/Layout'
-import TableHead from '../../components/table/TableHead'
-import { AddItemModal } from '../../components/Util'
 
-const sale = (props) => {
+interface Props {
+    name: String;
+}
+
+const cutomer = (props) => {
     const router = useRouter()
 
     return (
@@ -41,52 +45,18 @@ const sale = (props) => {
                         </div>
                     </div>
                     <div className='flex flex-row items-center justify-between '>
-                        <h3 className='p-3 font-bold md:text-base text-sm text-white'>کاڵاکان</h3>
-                        <div className="print:hidden">
+                        <h3 className='p-3 font-bold md:text-base text-sm text-white'>کڕیەنەکان</h3>
+                        {/* <div className="print:hidden">
                             <AddItemModal saveOrder={undefined} userId={undefined} />
-                        </div>
+                        </div> */}
                     </div>
                     <hr className='py-1' />
                     <div className="overflow-auto scrollbar-thin border border-gray-500 rounded-lg">
                         <table>
-                            <TableHead rows={['کۆد', ' کاڵا', 'دانە', 'نرخ', 'کۆ']} />
+                            <TableHeadCustomerOrder rows={['وەسڵ', ' بنکە', 'بری کڕین', 'پارەی دراو', 'گەرانەوە', 'بەروار', 'قەرز']} />
                             <tbody>
-                                <tr className='bg-neutral-800 bg-opacity-20 font-medium hover:bg-opacity-30'>
-                                    <td className="py-3 pl-4">
-                                        <img
-                                            src='https://banner2.cleanpng.com/20180325/sxq/kisspng-iphone-4-iphone-8-plus-iphone-5-iphone-x-iphone-apple-5ab72c72740db3.4853433615219539064754.jpg'
-                                            alt="Picture of the author"
-                                            className='w-5'
-                                        />
-                                    </td>
-                                    <td className="py-3 pl-4">
-                                        234
-                                    </td>
-                                    <td className="py-3 pl-4">
-                                        iPhone 8
-                                    </td>
-                                    <td className="py-3 pl-4">
-                                        22
-                                    </td>
-                                    <td className="py-3 pl-4">
-                                        $400.00
-                                    </td>
-                                    <td className="py-3 pl-4">
-                                        $8,800.00
-                                    </td>
-
-                                    <td className="font-medium py-3 pl-4 print:hidden">
-                                        <FaFolderOpen className="text-cyan-500 hover:text-cyan-700 hover:cursor-pointer" />
-                                    </td>
-
-                                    <td className="font-medium py-3 pl-4 print:hidden">
-                                        <FaEdit className="text-green-500 hover:text-green-700 hover:cursor-pointer" />
-                                    </td>
-
-                                    <td className="font-medium py-3 pl-4 print:hidden">
-                                        <FaTrashAlt className="text-red-500 hover:text-red-700 hover:cursor-pointer" />
-                                    </td>
-                                </tr>
+                                <CustomerOrderRow data={1} />
+                                <CustomerOrderRow data={1} />
                             </tbody>
                         </table>
                     </div>
@@ -94,16 +64,16 @@ const sale = (props) => {
                     <div className='flex flex-row-reverse md:text-base text-xs px-4 py-1'>
                         <div className='flex flex-col w-1/2 md:w-1/3 text-gray-700 font-normal'>
                             <div className='flex  flex-row text-black justify-between font-semibold'>
-                                <p >کۆی وەسڵ</p>
+                                <p >کۆی کڕین</p>
                                 <p> $22,000</p>
                             </div>
                             <div className='flex  flex-row  justify-between'>
-                                <p >کۆی داشکان </p>
+                                <p >کۆی پارەی دراو </p>
                                 <p className='font-semibold text-black'> $200</p>
                             </div>
                             <div className='flex  flex-row  justify-between'>
                                 <p >حسابی پێشوو</p>
-                                <p className='font-semibold text-black'> $2,200</p>
+                                <p className='font-semibold text-black'> $00</p>
                             </div>
                             <hr className='m-2' />
                             <div className='flex flex-row justify-between font-bold'>
@@ -147,6 +117,8 @@ const sale = (props) => {
                             </div>
                         </div>
                     </div>
+                    <button className='btn rounded-xl p-3 bg-red-700 flex items-center justify-center gap-2'> <FaShoppingBasket /> گەرانەوە</button>
+                    <button className='btn rounded-xl p-3 bg-green-600 flex items-center justify-center gap-2'> <FaMoneyCheck /> پارەدان</button>
                     <button className='btn rounded-xl p-3 flex items-center justify-center gap-2'> <FaPrint /> چاپکردن</button>
                 </div>
 
@@ -155,4 +127,4 @@ const sale = (props) => {
     )
 }
 
-export default sale
+export default cutomer

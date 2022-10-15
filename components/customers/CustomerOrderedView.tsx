@@ -1,9 +1,9 @@
 import React from 'react'
 import TableHead from '../table/TableHead'
 import { FaFilter, FaSearch } from 'react-icons/fa'
-import ItemOrderedRecord from './ItemOrderedRecord';
+import CustomerOrderedRecord from './CustomerOrderedRecord';
 
-const ItemOrderedView = () => {
+const CustomerOrderedView = () => {
     const [items, setItems] = React.useState([1, 2, 4]);
     async function handeSave(data: any) {
         setItems([...items, data])
@@ -49,7 +49,7 @@ const ItemOrderedView = () => {
                         <TableHead rows={['وەسڵ', 'کریار', 'دانە', 'نرخ', 'رێکەوت']} />
                         <tbody className="divide-y divide-gray-200">
                             {items?.map((item, i) => (
-                                <ItemOrderedRecord data={item} />
+                                <CustomerOrderedRecord data={item} />
                             ))}
                         </tbody>
                     </table>
@@ -59,4 +59,4 @@ const ItemOrderedView = () => {
     )
 }
 
-export default ItemOrderedView
+export default CustomerOrderedView

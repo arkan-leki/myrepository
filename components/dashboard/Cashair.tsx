@@ -1,4 +1,4 @@
-import { FaShoppingBasket } from 'react-icons/fa';
+import { FaSearch, FaShoppingBasket } from 'react-icons/fa';
 import TileView from './TileView';
 
 const Cashair = () => {
@@ -6,8 +6,12 @@ const Cashair = () => {
         <>
             <div className='flex flex-wrap bg-gray-300 bg-opacity-50 m-2 p-2 md:text-base text-xs'>
                 <div className='flex-1 flex flex-col m-2 p-2'>
-                    <div className='flex flex-row justify-between'>
-                        <h3 className='text-xl font-bold'>کاڵاکان</h3>
+                    <div className='flex flex-row gap-2 justify-between'>
+                        <h3 className='flex-grow  text-xl font-bold'>کاڵاکان</h3>
+                        <div className='flex items-center'>
+                            <input className='px-2 py-1 hover:text-gray-900 rounded-r' type="text" name="code" id="code" />
+                            <button className='p-2 bg-gray-700 hover:bg-black rounded-l'><FaSearch /></button>
+                        </div>
                         <button className='btn shadow-sm'><FaShoppingBasket /></button>
                     </div>
                     <TileView />
