@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaBoxes, FaBoxOpen, FaCarAlt, FaCartArrowDown, FaCcAmazonPay, FaChartBar, FaHome , FaHouseUser, FaInbox, FaMoneyBill, FaMoneyBillWave, FaUsers} from 'react-icons/fa';
+import { FaBoxes, FaBoxOpen, FaCarAlt, FaCartArrowDown, FaCcAmazonPay, FaChartBar, FaHome, FaHouseUser, FaInbox, FaMoneyBill, FaMoneyBillWave, FaUsers } from 'react-icons/fa';
 import AsideItem from './AsideItem'
 
 const ASideBar = ({ sate }) => {
@@ -16,8 +16,8 @@ const ASideBar = ({ sate }) => {
                         <AsideItem icon={<FaHome size={28} />} text={'ماڵەوە'} goto='/' />
                         <AsideItem icon={<FaCartArrowDown size={28} />} text={'فرۆشتنەکان'} goto='/sales' />
                         <AsideItem icon={<FaBoxes size={28} />} text={'کۆگا'} goto='/storages' />
-                        {/* <AsideItem icon={<FaBoxOpen size={28} />} text={'باری هاتوو'} goto='sales' />
-                        <AsideItem icon={<FaMoneyBill size={28} />} text={'پارەی گەراوە'} goto='sales' /> */}
+                        {/* <AsideItem icon={<FaBoxOpen size={28} />} text={'باری هاتوو'} goto='sales' />*/}
+                        <AsideItem icon={<FaMoneyBill size={28} />} text={'پارەی گەراوە'} goto='/payments' />
                         {/* <AsideItem icon={<FaMoneyBillWave size={28} />} text={'خەرجی'} goto='sales' /> */}
                         <AsideItem icon={<FaUsers size={28} />} text={'کڕیاران'} goto='/customers' />
                         {/* <AsideItem icon={<FaCcAmazonPay size={28} />} text={'کۆمپانیاکان'} goto='sales' />
