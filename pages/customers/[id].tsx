@@ -117,9 +117,9 @@ const cutomer = (props) => {
                             </div>
                         </div>
                     </div>
-                    <button className='btn rounded-xl p-3 bg-red-700 flex items-center justify-center gap-2'> <FaShoppingBasket /> گەرانەوە</button>
-                    <button className='btn rounded-xl p-3 bg-green-600 flex items-center justify-center gap-2'> <FaMoneyCheck /> پارەدان</button>
-                    <button className='btn rounded-xl p-3 flex items-center justify-center gap-2'> <FaPrint /> چاپکردن</button>
+                    <button className='btn  p-3 text-red-500 flex items-center justify-center gap-2'> <FaShoppingBasket /> گەرانەوە</button>
+                    <button className='btn  p-3 text-green-500 flex items-center justify-center gap-2'> <FaMoneyCheck /> پارەدان</button>
+                    <button className='btn  p-3 flex items-center justify-center gap-2'> <FaPrint /> چاپکردن</button>
                 </div>
 
             </div>

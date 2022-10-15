@@ -38,7 +38,7 @@
         transition-all duration-100 scale-0 origin-right;
     }
     .btn{
-        @apply bg-blue-700 hover:bg-opacity-100 text-white p-2 bg-opacity-70;
+        @apply bg-gray-700 bg-opacity-40 rounded-lg border-white border-2 hover:bg-opacity-100 text-white p-2;
     }
     .input{
         @apply outline-none bg-gray-500 rounded-sm p-2 text-white

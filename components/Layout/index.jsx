@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useState } from "react"
 
 const Layout = ({ children }) => {
-    const [sate, setSate] = useState(false)
+    const [sate, setSate] = useState(true)
     const handleState = () => {
         setSate(!sate)
     }
