@@ -1,88 +1,51 @@
-import React, { useState } from 'react'
-import { BsSearch } from 'react-icons/bs'
-import { HiCalendar, HiCurrencyDollar } from 'react-icons/hi'
-import { Layout } from '../../components/Layout'
-import { Modal } from '../../components/Util'
+import { FaFilter, FaSearch } from 'react-icons/fa'
+import Layout from '../../components/Layout'
+import PaymentsTable from '../../components/payments/PaymentsTable'
 
 const Home = (props) => {
-    const [show, setShow] = useState(false)
-
-    const handleShow = () => { setShow(true) }
-    const handleClose = () => { setShow(false) }
-
     return (
-        <>
-            <Layout>
-                <Modal children={<div className='p-3 m-2'>
-                    <div className='flex items-center mb-2'>
-                        <label htmlFor="customer">Customer :</label>
-                        <input type="text" name='customer' className='input mx-1 flex-1' placeholder='john simth' />
-                    </div>
-                    <div className='flex items-center'>
-                        <label htmlFor="customer">Payments :</label>
-                        <input type="number" name='customer' className='input mx-1 flex-1' placeholder='$000' />
-                    </div>
-                </div>}
-                 visible={show} onClose={handleClose} title={'add new paymennts'} />
-                <section>
-                    <div className='p-3 bg-blue-800 bg-opacity-20 m-2 flex flex-wrap w-full'>
-                        <button className='btn mx-1 my-2 mb-0 w-full sm:w-auto' onClick={handleShow}>Add New Payment</button>
-                        <div className='flex flex-1 my-2 mx-1'>
-                            <input type="text" name='customer' className='input rounded-sm flex-1 py-3' placeholder='john simth' />
-                            <button className='btn'><BsSearch size={20} /></button>
+        <Layout>
+            <div className="flex flex-col mx-4 ">
+                <div className=" overflow-x-auto ">
+                    <div className="flex justify-between gap-1 items-center py-3 pl-2">
+                        <h3 className='text-lg font-bold'>پارەدانەکان</h3>
+                        <div className="flex-1 relative max-w-xs">
+                            <label htmlFor="hs-table-search" className="sr-only">
+                                گەڕان
+                            </label>
+                            <input
+                                type="text"
+                                name="hs-table-search"
+                                id="hs-table-search"
+                                className="block  w-full p-3 pl-10 text-xs border-gray-100 rounded-md focus:border-blue-500 focus:ring-blue-500 bg-gray-900 bg-opacity-60 hover:bg-opacity-100 dark:border-gray-700 dark:text-gray-400"
+                                placeholder="گەران..."
+                            />
+                            <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                                <FaSearch />
+                            </div>
                         </div>
-                        <div className='flex items-center w-full sm:w-auto '>
-                            <input type="date" className='input mx-1 rounded-none flex-1 py-3' />
+
+                        <div className="flex items-center space-x-2">
+                            <div className="relative">
+                                {/* <AddSaleModal saveOrder={handeSave} /> */}
+                                <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 m-1">
+                                    <span className="relative inline-flex items-center px-3 py-3 space-x-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-md sm:py-2">
+                                        <div>
+                                            <FaFilter />
+                                        </div>
+                                        <div className="hidden sm:block">
+                                            فلتەر
+                                        </div>
+                                    </span>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    <div className=' bg-slate-700 bg-opacity-40 m-2 pb-3'>
-                        <div>
-                            <h3 className="text-white font-bold p-3">Recent Payments</h3>
-                        </div>
-                        <div className="w-full">
-                            <div className="border-gray-600 border-y-2 hover:bg-slate-700 cursor-pointer bg-slate-800 
-                             bg-opacity-50 flex flex-row justify-between items-center px-2" >
-                                <div className="m-2">
-                                    <img className="w-16 rounded-full" src="/arkan.jpg" alt="account Logo" />
-                                </div>
-                                <div className="m-2 text-lg flex-1 flex-col flex flex-wrap justify-evenly items-start">
-                                    <h4 className="whitespace-pre-wrap font-bold font-sans text-center">arkan@gazino</h4>
-                                    <p className="pr-2 flex-row flex items-center justify-between"> <HiCalendar className="m-2" /> 3/4/2022 4:30</p>
-                                </div>
-                                <p className="pr-2 flex-row flex text-lg items-center justify-between btn bg-green-800 bg-opacity-80 rounded-lg"> <HiCurrencyDollar size={20} />300</p>
-                            </div>
-                        </div>
-                        <div className="w-full">
-                            <div className="border-gray-600 border-y-2 hover:bg-slate-700 cursor-pointer bg-slate-800 
-                             bg-opacity-50 flex flex-row justify-between items-center px-2" >
-                                <div className="m-2">
-                                    <img className="w-16 rounded-full" src="/arkan.jpg" alt="account Logo" />
-                                </div>
-                                <div className="m-2 text-lg flex-1 flex-col flex flex-wrap justify-evenly items-start">
-                                    <h4 className="whitespace-pre-wrap font-bold font-sans text-center">arkan@gazino</h4>
-                                    <p className="pr-2 flex-row flex items-center justify-between"> <HiCalendar className="m-2" /> 3/4/2022 4:30</p>
-                                </div>
-                                <p className="pr-2 flex-row flex text-lg items-center justify-between btn bg-green-800 bg-opacity-80 rounded-lg"> <HiCurrencyDollar size={20} />300</p>
-                            </div>
-                        </div>
-                        <div className="w-full">
-                            <div className="border-gray-600 border-y-2 hover:bg-slate-700 cursor-pointer bg-slate-800 
-                             bg-opacity-50 flex flex-row justify-between items-center px-2" >
-                                <div className="m-2">
-                                    <img className="w-16 rounded-full" src="/arkan.jpg" alt="account Logo" />
-                                </div>
-                                <div className="m-2 text-lg flex-1 flex-col flex flex-wrap justify-evenly items-start">
-                                    <h4 className="whitespace-pre-wrap font-bold font-sans text-center">arkan@gazino</h4>
-                                    <p className="pr-2 flex-row flex items-center justify-between"> <HiCalendar className="m-2" /> 3/4/2022 4:30</p>
-                                </div>
-                                <p className="pr-2 flex-row flex text-lg items-center justify-between btn bg-green-800 bg-opacity-80 rounded-lg"> <HiCurrencyDollar size={20} />300</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </Layout>
-        </>
+                    <PaymentsTable />
+                </div>
+            </div>
+        </Layout>
     )
 }
 

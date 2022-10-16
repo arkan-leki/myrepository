@@ -1,7 +1,7 @@
 import type { InferGetStaticPropsType } from 'next'
 import { BsCalendar2, BsSearch } from 'react-icons/bs'
 import CustomerList from '../../components/CustomerList'
-import { Layout } from '../../components/Layout'
+import Layout from '../../components/Layout'
 import prisma from '../../lib/prisma'
 
 const Home = ({ customers }: InferGetStaticPropsType<typeof getStaticProps>) => {

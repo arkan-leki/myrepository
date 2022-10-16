@@ -22,7 +22,7 @@ const CustomerItem = ({ customer, Id, Index, setIndex }: Props) => {
                 <div className="m-2">
                     <img className="w-16 rounded-full" src="/arkan.jpg" alt="account Logo" />
                 </div>
-                <div className="m-2 text-lg flex-1 flex-col flex flex-wrap justify-evenly items-start">
+                <div className="m-2 text-sm flex-1 flex-col flex flex-wrap justify-evenly items-start">
                     <h4 className="whitespace-pre-wrap font-bold font-sans text-center">{customer.name}</h4>
                     <p className="pr-2 flex-row flex items-center justify-between"> <HiPhone className="m-2" /> 0770-999-8888</p>
                     <p className="pr-2 flex-row flex items-center justify-between"> <BsMapFill className="m-2" /> {customer.address}</p>
@@ -33,14 +33,14 @@ const CustomerItem = ({ customer, Id, Index, setIndex }: Props) => {
 
             </div>
             {Index === Id && (<div className='flex flex-row items-start justify-between bg-blue-900 bg-opacity-40 border-b-2 texts-center w-full'>
-                <div className='m-7 text-lg'>
+                <div className='m-7 text-sm'>
                     <p >Total : $300</p>
                     <p >Loan : $300</p>
                     <p >Paied : $300</p>
                 </div>
                 <div className="flex flex-col">
-                    <button className="btn p-2 rounded m-4"><BsInfo /></button>
-                    <button className="btn p-2 bg-red-500 rounded m-4"><BsBookmark /></button>
+                    <button className="btn  rounded "><BsInfo /></button>
+                    <button className="btn  bg-red-500 rounded "><BsBookmark /></button>
                 </div>
             </div>)}
         </>

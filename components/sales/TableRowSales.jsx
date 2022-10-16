@@ -19,7 +19,7 @@ const TableRow = ({ open }) => {
                 </div>
             </td>
             <td className="font-medium">
-                1
+                موبایل
             </td>
             <td className="">
                 iPhone 14

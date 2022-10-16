@@ -29,13 +29,14 @@ const CustomerList = ({ InitialCustomers }: Props) => {
 
     return (
         <>
-            <div className="bg-gray-700 rounded-md flex flex-col justify-center w-full items-center">
+            <div className="bg-gray-700 bg-opacity-60 sm:hidden rounded-md flex flex-col justify-center w-full items-center ">
                 <div>
                     <h3 className="text-white font-bold py-3">Customer</h3>
                 </div>
                 <div className="w-full">
                     {customers.map((customer, i) => (
-                        <CustomerItem key={customer.id} customer={customer} Id={i} setIndex={setIndex} Index={index} />
+                        <><CustomerItem key={customer.id + 1} customer={customer} Id={i} setIndex={setIndex} Index={index} /><CustomerItem key={customer.id + 2} customer={customer} Id={i} setIndex={setIndex} Index={index} /><CustomerItem key={customer.id + 3} customer={customer} Id={i} setIndex={setIndex} Index={index} /><CustomerItem key={customer.id + 4} customer={customer} Id={i} setIndex={setIndex} Index={index} /></>
+
                     ))}
                 </div>
                 <div className="py-3 my-2 text-sm text-blue-700 flex w-full flex-row justify-evenly items-center ">
